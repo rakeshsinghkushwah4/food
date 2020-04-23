@@ -26,7 +26,7 @@ SECRET_KEY = '95p5e014-(0b8pm+hoo#g#soof=6#-ax@mf6(!iz0)&06&5ifu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://food-pandas.herokuapp.com']
 
 
 # Application definition
