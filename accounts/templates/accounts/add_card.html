@@ -1,0 +1,53 @@
+{% extends 'accounts/base.html' %}
+<!-- This is use for arthmetic oprations  -->
+{% load mathfilters %}
+{% block body %}
+<div class="row">
+    <div class="col-md mx-5">
+        <h3 class="text-center my-5 " style="color: rgb(226, 20, 20)">YOUR ADD-CARD PRODUCT</h3><hr>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Quntity</th>
+                    <th>Total Price</th>
+                    <th>Cancel Order</th>
+                </tr>
+                {% for key,value in product.items %}
+                <tr>
+                    <td>{{key.name}}</td>
+                    <td>{{key.Category}}</td>
+                    <td>{{key.price}}</td>
+                    <td>{{value.quntity}}</td>
+                    <td>{{key.price|mul:value.quntity}}</td>
+                    <td><a class="btn btn-info" href="{% url 'cancel_add_card' value.id %}">Cancel Order</a></td>
+                </tr>
+                {% endfor %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total</td>
+                <td>Rs.{{total}}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <form action="{% url 'access_card' %}" method="POST" >
+                        {% csrf_token %} 
+                        <input type="submit" class="btn btn-info">
+                </form>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+{% endblock %}

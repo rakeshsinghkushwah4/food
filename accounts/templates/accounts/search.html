@@ -1,0 +1,38 @@
+{% extends 'accounts/base.html' %} {% block body %}
+<br>
+<div class="mx-5">
+    <a class="btn btn-success mx-5" href="{% url 'customer' customer.id %}">Back</a>
+    <hr>
+</div>
+<form action="{% url 'search' customer.id %}" method="POST">
+                {% csrf_token %}
+               {{search_form}}
+                <button class="btn btn-primary mx-5" type="submit">Search</button>
+            </form>
+            <br>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Date Ordered</th>
+                    <th>Status</th>
+                    <th>Update</th>
+                </tr>
+                {% for o in order %}
+                <tr>
+                    <td>{{o.product}}</td>
+                    <td>{{o.product.Category}}</td>
+                    <td>{{o.cr_date}}</td>
+                    <td>{{o.status}}</td>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'update_order' o.id%}">Update</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Rakesh</p>
+    
+    <p>Rakesh singh kushwah</p>
+    <form action="{% url 'ajax_test' %}" method="POST" id="form">
+        {% csrf_token %}
+       {% for f in form %}
+       {{f.label_tag}}
+       {{f}}
+       <br>
+       <br>
+       {% endfor %}
+        <input type="submit" id="btn" value="Submit">
+    </form>
+    <div id="customer">
+   <h1>Hello </h1>
+</div >
+</body>
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/custam.js' %}"></script>
+<!-- <script>
+    $('#form').on('submit', function(event){
+    event.preventDefault();
+    console.log("form submitted!")  // sanity check
+});
+</script> -->
+
+</html>

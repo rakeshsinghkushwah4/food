@@ -1,0 +1,93 @@
+{% extends 'accounts/base.html' %}
+{% block body %}
+<br>
+<a class="btn btn-info mx-5" href="{% url 'user_page'%}">Back</a>
+<a class="btn btn-primary float-right mx-5" style="color:floralwhite;" href="{% url 'access_card' %}" >Add Card</a>
+<p id="a_count" class="float-right" style="font-size:30px;color:#ffffff;" >{{count}}</p>
+<hr>
+<div class="row">
+{% for p in order %}
+<div class="col-md-3">
+    <div class="card m-2">
+        <img src="{{p.image.url}}" alt="listing-photo" class="img-fluid m-2">
+        <div class="card-body">
+            <h2 class="card-title">{{p.name}} </h2>
+            <h3 class="card-title">{{p.price}} </h3>
+            <div id="count">
+                <h2 class="btn btn-info add" id="add_{{p.id}}" > + </h2>
+                <span id="no_product_{{p.id}}">1</span>
+                <input type="hidden" id="number_product_{{p.id}}" value="1">
+                <h2 class="btn btn-warning sub" id="sub_{{p.id}}" > - </h2>    
+            </div>
+            <br>
+        <a class="btn btn-success" href="" onclick="this.href='/accounts/order_product/{{p.slug}}/'+document.getElementById('number_product_{{p.id}}').value">Order</a>
+            <a class="btn btn-info" href="{% url 'product_detail' p.slug %}">Product Details</a>
+            <a  id="add_to_card_{{p.id}}" class="btn btn-warning add_to_card" href="{% url 'add_to_card'%}">Add card</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock%}
+
+{% block js %}
+<script>
+    $(document).ready(function(){
+        var number=0;
+        $('.add').on('click',function(){
+            var id_res = $(this).attr('id');
+            var id = id_res.split("_")[1];
+            var no_product = $("#number_product_"+id).val();
+            no_product = parseInt(no_product);
+            no_product = no_product+1;
+            $("#no_product_"+id).text(no_product);
+            $("#number_product_"+id).val(no_product);
+            console.log('product',no_product);
+
+            // num = num+1
+            // console.log(num)
+            // console.log("nam",typeof(num))
+            // console.log('rakesh',res)    
+        //    number=$('#no_product').val()
+        //    number += 1
+        //    console.log(number)
+        //    $('#no_product').val(number)
+        });
+        $('.sub').on('click',function(){
+            var id_res = $(this).attr('id');
+            var id = id_res.split("_")[1];
+            var no_product = $("#number_product_"+id).val();
+            no_product = parseInt(no_product);
+            if(no_product>1){
+                no_product = no_product-1;
+                $('#no_product_'+id).text(no_product);
+                $("#number_product_"+id).val(no_product);
+            }
+        });
+
+    });
+    $('.add_to_card').on('click', function (event) {
+        event.preventDefault(); 
+        var id_res = $(this).attr('id');
+        var id = id_res.split("_")[3];
+        var url = document.getElementById('add_to_card_'+id).getAttribute('href');
+        var quntity = $("#number_product_"+id).val();
+        console.log(id);
+        console.log('rakeshsinghkushwah')
+        console.log(url)
+        $.ajax({
+            type:"GET",
+            url:url,
+            data:{"product_id":id,"quntity":quntity},
+            success:function(data){
+            var c ;
+               $.each(data,function(index, value) {
+               console.log(value)
+                    c = value
+               });
+                $('#a_count').text(c);
+            },
+        });      
+    });
+    </script>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'accounts/base.html'%}
+{% load static %}
+{% block body %}
+
+<br>
+<br>
+
+<div class="container justify-content-center">
+  <div class="row">
+    <div class="col-md">
+      <div class="card card-md">
+        <div class="card-body">
+          <h1 class="card-title text-center text-success">SIGN UP</h1>
+          <form action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="text-center">
+              <div class="form-group">
+                {{form.name.label_tag}}
+                {{form.name}}
+                {% if form.name.errors %}
+                {% for error in form.name.errors %}
+                <p class="text-danger">{{error}}</p>
+                {% endfor %}
+                {% endif %}
+                <hr>
+              </div>
+              <div class="form-group">
+                {{form.username.label_tag}}
+                {{form.username}}
+                {% if form.username.errors %}
+                {% for error in form.username.errors %}
+                <p class="text-danger">{{error}}</p>
+                {% endfor %}
+                {% endif %}
+                <hr>
+              </div>
+              <div class="form-group">
+                {{form.password.label_tag}}
+                {{form.password}}
+                {% if form.errors %}
+                {%for error in form.non_field_errors%}
+                <p class="text-danger">{{error}}</p>
+                {%endfor%}
+                {%endif%}
+
+                <hr>
+              </div>
+              <div class="form-group">
+                {{form.confirm_password.label_tag}}
+                {{form.confirm_password}}
+                <hr>
+              </div>
+              <div class="form-group">
+                {{form.register_type.label_tag}}
+                {{form.register_type}}
+                <hr>
+              </div>
+              <div class="form-group">
+                {{form.phone.label_tag}}
+                {{form.phone}}
+                {% if form.phone.errors %}
+                {% for error in form.phone.errors %}
+                <p class="text-danger">{{error}}</p>
+                {% endfor %}
+                {% endif %}
+                <hr>
+              </div>
+              <div class="form-group">
+                {{form.profile_pic.label_tag}}<br>
+                {{form.profile_pic}}
+                <hr>
+              </div>
+              <input type="submit" class="btn btn-info" value="SignUp">
+            </div>
+          </form>
+        </div>
+        <div>
+          <div class="d-flex justify-content-center links">
+            <p> Already have an accounts? <a href="{% url 'login' %}">Login</a></p>
+          </div>
+          <div class="d-flex justify-content-center links">
+            <p> Forget Password <a href="{% url 'reset_password' %}">Reset Password</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+<style>
+  .hello-mgs{
+    font-size: larger;
+    color: azure;
+    margin-right: 1cm;
+  }
+</style>
+{% load account_extras %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_staff or request.user|has_group:"seller" %}
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home'%}"> Dashboard </a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'product'%}">Product</a>
+      </li>     
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'add_product'%}">Add Product</a>
+      </li>          
+         </ul>
+         {% else %}
+         <ul class="navbar-nav mr-auto">
+
+         <li class="nav-item active">
+             <a class="nav-link" href="{% url 'user_page' %}">Home</a>
+         </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'product_show' %}">Order Product</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'accounts_settings' %}">Settings</a>
+          </li>
+          {% endif %}          
+             </ul>
+         {% endif %}
+         <ul class="navbar-nav ml-auto">
+          {% if request.user.is_authenticated%}
+          <span class="hello-mgs">Hello, {{request.user.customer}}</span>
+          <span ><a class="hello-mgs" href="{% url 'logout' %}">Logout</a></span>
+          {% else %}
+         <li class="nav-item active">
+        <a class="nav-link" href="{% url 'register'%}">Sign Up</a>
+      </li>   
+          <li class="nav-item active">
+        <a class="nav-link" href="{% url 'login'%}">Login</a>
+      </li>                     
+         </ul>
+  </div>  
+  {% endif%}  
+</nav>
+
+
+
+
