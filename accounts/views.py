@@ -62,8 +62,8 @@ def logout(req):
     return redirect('login')
 
 @login_required(login_url='login')
-@allowed_user(allowed_roles=['admin','seller'])
 @admin_only(url='user_page')
+@allowed_user(allowed_roles=['admin','seller'])
 def home(req):
     # ########################################################################
     # we should want that order which seller logged in 

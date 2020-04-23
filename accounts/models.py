@@ -10,7 +10,7 @@ class Customer(models.Model):
     user = models.OneToOneField(to=User,on_delete=models.CASCADE)
     name = models.CharField(max_length= 100, validators=[validator.name])
     phone = models.CharField(max_length= 10,validators=[validator.phone])
-    profile_pic = models.ImageField(upload_to='profile_pic/',default='facebook.jpg',null=True,blank=True)
+    profile_pic = models.ImageField(default='facebook.jpg',upload_to='profile_pic/',null=True,blank=True)
     cr_date = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.name
