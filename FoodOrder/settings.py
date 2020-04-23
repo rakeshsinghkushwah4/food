@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '95p5e014-(0b8pm+hoo#g#soof=6#-ax@mf6(!iz0)&06&5ifu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://food-pandas.herokuapp.com']
 
