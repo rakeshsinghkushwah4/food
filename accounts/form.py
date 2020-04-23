@@ -51,12 +51,12 @@ class customerForm(forms.ModelForm):
 
 class searchForm(forms.Form):
     Status = (('Status','Status'),('Panding','Panding'),('Out of delivary','Out of delivary'),('Delivered','Delivered'))
-    product = Product.objects.all()
-    pro = (('Product','Prodcut'),)
-    for p in product:
-        pro= pro+((str(p),str(p)),)
-    status = forms.ChoiceField(choices=Status,required=False,initial='None')
-    products = forms.ChoiceField(choices = pro,required=False,initial='None')
+    # product = Product.objects.all()
+    # pro = (('Product','Prodcut'),)
+    # for p in product:
+    #     pro= pro+((str(p),str(p)),)
+    # status = forms.ChoiceField(choices=Status,required=False,initial='None')
+    # products = forms.ChoiceField(choices = pro,required=False,initial='None')
 
 class ajaxForm(forms.ModelForm):
     class Meta:
