@@ -260,7 +260,7 @@ def Productshow(req):
     return render(req,'accounts/order_product.html',context)
 
 @login_required(login_url='login')
-@allowed_user(allowed_roles=['customer'])
+@allowed_user(allowed_roles=['customer','seller'])
 def Cancel_order(req,id):
     product = Product.objects.get(id=id)
     product.image.delete()
