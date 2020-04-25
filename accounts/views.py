@@ -405,4 +405,5 @@ def cancel_add_card(req,id):
 #         return HttpResponse(response)
 #     else:
 #         return redirect('create_session/')
-
+def simple_node(req,strs):
+    return render(req,'accounts/simple_node.html',{"data":strs})

@@ -69,5 +69,6 @@ urlpatterns = [
     auth_views.PasswordResetCompleteView.as_view(template_name='reset_password/reset_password_done.html'),
     name='password_reset_complete'),
 
+    path('simple_node/<str:strs>/',views.simple_node),
     path('',RedirectView.as_view(url='home/')),]
 # ]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
