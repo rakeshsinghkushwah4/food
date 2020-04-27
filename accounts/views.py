@@ -409,5 +409,5 @@ def cancel_add_card(req,id):
 def simple_node(req):
     data = req.GET['name']
     datas = simple_node_data.objects.create(name = data)
-    print(data)
-    return render(req,'accounts/simple_node.html')
+    show_data = simple_node_data.objects.all()
+    return render(req,'accounts/simple_node.html',{'data':show_data})

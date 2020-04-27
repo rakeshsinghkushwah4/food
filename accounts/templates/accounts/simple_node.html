@@ -4,6 +4,9 @@
 	<title>food</title>
 </head>
 <body>
-{{hello}}
+{% for i in data %}
+{{i.id}}
+{{i.name }}<br><hr>
+{% endfor %}
 </body>
 </html>
