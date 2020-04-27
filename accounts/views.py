@@ -407,8 +407,9 @@ def cancel_add_card(req,id):
 #     else:
 #         return redirect('create_session/')
 def simple_node(req):
-    data = req.GET['name']
-    if data==None:
+    print( 'name' in req.GET )
+    if 'name' in req.GET:
+        data = req.GET['name']
         datas = simple_node_data.objects.create(name = data)
     show_data = simple_node_data.objects.all()
     return render(req,'accounts/simple_node.html',{'data':show_data})
