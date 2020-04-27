@@ -15,6 +15,7 @@ from django.core import serializers
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 from accounts.models import add_card
+from accounts.models import simple_node_data
 
 # from myproject.settings import EMAIL_HOST_USER
 # from django.core.mail import send_mail
@@ -405,5 +406,8 @@ def cancel_add_card(req,id):
 #         return HttpResponse(response)
 #     else:
 #         return redirect('create_session/')
-def simple_node(req,strs):
-    return render(req,'accounts/simple_node.html',{"data":strs})
+def simple_node(req):
+    data = req.GET['name']
+    datas = simple_node_data.objects.create(name = data)
+    print(data)
+    return render(req,'accounts/simple_node.html')
