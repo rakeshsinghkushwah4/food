@@ -80,16 +80,16 @@ WSGI_APPLICATION = 'FoodOrder.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-#  New
 DATABASES = {
-    'default' : dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
+#  New
+# DATABASES = {
+#     'default' : dj_database_url.config()
+# }
 
 
 # Password validation
@@ -143,3 +143,6 @@ EMAIL_HOST_USER = 'rakeshsinghkushwah09@gmail.com'
 EMAIL_HOST_PASSWORD = 'rakesh@0901'
 
 django_heroku.settings(locals())
+
+
+
