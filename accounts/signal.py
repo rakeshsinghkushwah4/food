@@ -10,4 +10,6 @@ def customer_profile(sender,instance,created, **kwargs):
         # instance.groups.add(group)
         Customer.objects.create(user=instance)
         print('profile created')
+    else:
+    	instance.customer.save()
 post_save.connect(customer_profile,sender=User)

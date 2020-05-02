@@ -27,7 +27,7 @@ SECRET_KEY = '95p5e014-(0b8pm+hoo#g#soof=6#-ax@mf6(!iz0)&06&5ifu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://food-pandas.herokuapp.com']
+ALLOWED_HOSTS = ['food-pandas.herokuapp.com']
 
 
 # Application definition
@@ -129,7 +129,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS = [  os.path.join(BASE_DIR, 'static')   ]
 
 MEDIA_URL = '/media/'
@@ -140,9 +139,12 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'rakeshsinghkushwah09@gmail.com'
-EMAIL_HOST_PASSWORD = 'rakesh@0901'
+EMAIL_HOST_PASSWORD = 'xxxxxxxxxxxx'
 
 django_heroku.settings(locals())
+
+# when we send email so setup less secore and open below link and click continue
+# https://accounts.google.com/b/0/DisplayUnlockCaptcha
 
 
 
